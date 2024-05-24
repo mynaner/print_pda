@@ -4,18 +4,19 @@ import 'package:flutter/services.dart';
 
 
 class PrintPda {
-  final methodChannel = const MethodChannel('print_flutter_plugin');
 
-  Future<bool?> init() async {
+  static  methodChannel = const MethodChannel('print_flutter_plugin');
+
+ static Future<bool?> init() async {
     return await methodChannel.invokeMethod<bool>('init');
   }
 
-  Future<bool?> printText(PrintTextVo params) async {
+  static Future<bool?> printText(PrintTextVo params) async {
     print(params.toJson());
     return await methodChannel.invokeMethod<bool>('printText', params.toJson());
   }
 
-  Future<bool?> printQR(PrintQRVo params) async {
+  static Future<bool?> printQR(PrintQRVo params) async {
     print(params.toJson());
     return await methodChannel.invokeMethod<bool>('printQR', params.toJson());
   }
